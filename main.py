@@ -17,19 +17,19 @@ st.sidebar.markdown(
 S = st.sidebar.number_input("Current Asset Price", value=100.0, step=1.0, format="%.2f")
 K = st.sidebar.number_input("Strike Price", value=100.0, step=1.0, format="%.2f")
 T = st.sidebar.number_input("Time to Maturity (Years)", value=1.0, step=0.1, format="%.2f")
-sigma = st.sidebar.number_input("Volatility (σ)", value=0.2, step=0.01, format="%.2f")
+sigma = st.sidebar.number_input("Volatility", value=0.2, step=0.01, format="%.2f")
 r = st.sidebar.number_input("Risk-Free Interest Rate", value=0.05, step=0.01, format="%.2f")
 
 
 # --- Black-Scholes Calculation ---
-def black_scholes_call_put(S, K, T, σ, r):
-    d1 = (np.log(S / K) + (r + 0.5 * σ ** 2) * T) / (σ * np.sqrt(T))
-    d2 = d1 - σ * np.sqrt(T)
+def black_scholes_call_put(S, K, T, sigma, r):
+    d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+    d2 = d1 - sigma * np.sqrt(T)
     call = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
     put = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
     return round(call, 2), round(put, 2)
 
-call_price, put_price = black_scholes_call_put(S, K, T, σ, r)
+call_price, put_price = black_scholes_call_put(S, K, T, sigma, r)
 
 # --- Main Content ---
 input_data = {
@@ -37,7 +37,7 @@ input_data = {
         "Current Asset Price",
         "Strike Price",
         "Time to Maturity (Years)",
-        "Volatility (σ)",
+        "Volatility (sigma)",
         "Risk-Free Interest Rate"
     ],
     "Value": [S, K, T, sigma, r]
@@ -78,7 +78,7 @@ with col_heat1:
     st.subheader("📊 Call Price Heatmap")
     fig1, ax1 = plt.subplots()
     sns.heatmap(call_matrix, annot=True, fmt=".1f", xticklabels=[f"{v:.2f}" for v in vol_range], yticklabels=[f"{s:.0f}" for s in spot_range], cmap="viridis", ax=ax1)
-    ax1.set_xlabel("Volatility (σ)")
+    ax1.set_xlabel("Volatility (sigma)")
     ax1.set_ylabel("Spot Price")
     st.pyplot(fig1)
 
@@ -86,6 +86,6 @@ with col_heat2:
     st.subheader("📉 Put Price Heatmap")
     fig2, ax2 = plt.subplots()
     sns.heatmap(put_matrix, annot=True, fmt=".1f", xticklabels=[f"{v:.2f}" for v in vol_range], yticklabels=[f"{s:.0f}" for s in spot_range], cmap="plasma", ax=ax2)
-    ax2.set_xlabel("Volatility (σ)")
+    ax2.set_xlabel("Volatility (sigma)")
     ax2.set_ylabel("Spot Price")
     st.pyplot(fig2)

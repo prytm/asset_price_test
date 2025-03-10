@@ -1,8 +1,6 @@
-pip install scipy
-
 streamlit
 numpy
-scipy.stats
+scipy
 norm
 matplotlib.pyplot
 seaborn

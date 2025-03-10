@@ -20,6 +20,7 @@ T = st.sidebar.number_input("Time to Maturity (Years)", value=1.0, step=0.1, for
 σ = st.sidebar.number_input("Volatility (σ)", value=0.2, step=0.01, format="%.2f")
 r = st.sidebar.number_input("Risk-Free Interest Rate", value=0.05, step=0.01, format="%.2f")
 
+
 # --- Black-Scholes Calculation ---
 def black_scholes_call_put(S, K, T, σ, r):
     d1 = (np.log(S / K) + (r + 0.5 * σ ** 2) * T) / (σ * np.sqrt(T))
@@ -31,13 +32,22 @@ def black_scholes_call_put(S, K, T, σ, r):
 call_price, put_price = black_scholes_call_put(S, K, T, σ, r)
 
 # --- Main Content ---
-st.markdown("## 🎯 Black-Scholes Pricing Model")
-col1, col2, col3, col4, col5 = st.columns(5)
-col1.metric("Current Asset Price", f"{S:.4f}")
-col2.metric("Strike Price", f"{K:.4f}")
-col3.metric("Time to Maturity (Years)", f"{T:.4f}")
-col4.metric("Volatility (σ)", f"{σ:.4f}")
-col5.metric("Risk-Free Interest Rate", f"{r:.4f}")
+input_data = {
+    "Parameter": [
+        "Current Asset Price",
+        "Strike Price",
+        "Time to Maturity (Years)",
+        "Volatility (σ)",
+        "Risk-Free Interest Rate"
+    ],
+    "Value": [S, K, T, sigma, r]
+}
+
+df = pd.DataFrame(input_data)
+
+# Tampilkan tabel
+st.subheader("Input Parameters Summary")
+st.table(df)
 
 col_call, col_put = st.columns(2)
 with col_call:

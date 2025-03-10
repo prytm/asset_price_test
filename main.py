@@ -10,8 +10,8 @@ import seaborn as sns
 #######################
 # Page configuration
 st.set_page_config(
-    page_title="Black-Scholes Option Pricing Model",
-    page_icon="📊",
+    page_title="Risk Projection",
+    page_icon="📉",
     layout="wide",
     initial_sidebar_state="expanded")
 
@@ -222,7 +222,6 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
 
-st.markdown("")
 st.title("Options Price - Interactive Heatmap")
 st.info("Explore how option prices fluctuate with varying 'Spot Prices and Volatility' levels using interactive heatmap parameters, all while maintaining a constant 'Strike Price'.")
 

@@ -1,5 +1,5 @@
 streamlit
 numpy
-norm
+scipy.stats
 matplotlib.pyplot
 seaborn

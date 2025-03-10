@@ -1,3 +1,5 @@
+pip install scipy
+
 streamlit
 numpy
 scipy.stats

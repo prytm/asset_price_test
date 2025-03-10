@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
+import pandas
 import seaborn as sns
 
 st.set_page_config(page_title="Black-Scholes Model", layout="wide")

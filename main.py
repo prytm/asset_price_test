@@ -17,7 +17,7 @@ st.sidebar.markdown(
 S = st.sidebar.number_input("Current Asset Price", value=100.0, step=1.0, format="%.2f")
 K = st.sidebar.number_input("Strike Price", value=100.0, step=1.0, format="%.2f")
 T = st.sidebar.number_input("Time to Maturity (Years)", value=1.0, step=0.1, format="%.2f")
-σ = st.sidebar.number_input("Volatility (σ)", value=0.2, step=0.01, format="%.2f")
+sigma = st.sidebar.number_input("Volatility (σ)", value=0.2, step=0.01, format="%.2f")
 r = st.sidebar.number_input("Risk-Free Interest Rate", value=0.05, step=0.01, format="%.2f")
 
 

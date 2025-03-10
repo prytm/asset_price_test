@@ -2,6 +2,7 @@ streamlit
 numpy
 scipy
 norm
+plotly
 matplotlib
 pandas
 seaborn

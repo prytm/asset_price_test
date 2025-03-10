@@ -222,6 +222,9 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
 
+st.markdown("")
+st.markdown("")
+st.markdown("")
 st.title("Options Price - Interactive Heatmap")
 st.info("Explore how option prices fluctuate with varying 'Spot Prices and Volatility' levels using interactive heatmap parameters, all while maintaining a constant 'Strike Price'.")
 

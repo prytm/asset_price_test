@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import norm
+import scipy.stats
 import matplotlib.pyplot as plt
 import seaborn as sns
 

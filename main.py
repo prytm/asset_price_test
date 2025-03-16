@@ -73,9 +73,6 @@ with st.sidebar:
     strike = st.number_input("Strike Price", value=100.0)
     time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
-    
-    spot_range = np.linspace(spot_min, spot_max, 10)
-    vol_range = np.linspace(vol_min, vol_max, 10)
 
 # (Include the BlackScholes class definition here)
 def BlackScholes (S, K, T, r, sigma):

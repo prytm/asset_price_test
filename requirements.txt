@@ -1,4 +1,7 @@
 streamlit
+datetime
+yfinance
+pandas_datareader
 numpy
 scipy
 norm

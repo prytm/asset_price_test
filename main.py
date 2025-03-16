@@ -72,7 +72,6 @@ with st.sidebar:
     strike = st.number_input("Strike Price", value=100.0)
     time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
-    volatility = bs_vol
 
     st.markdown("---")
     calculate_btn = st.button('Heatmap Parameters')
@@ -83,7 +82,6 @@ with st.sidebar:
     
     spot_range = np.linspace(spot_min, spot_max, 10)
     vol_range = np.linspace(vol_min, vol_max, 10)
-
 
 # (Include the BlackScholes class definition here)
 def BlackScholes (S, K, T, r, sigma):
@@ -101,7 +99,6 @@ start = dt.datetime(end.year - 1, end.month, end.day)
 
 df = yf.download(stocks, start, end)
 df.columns = df.columns.get_level_values(0)
-
 
 # Stocks Volatility
 log_return = np.log(df['Close'] / df['Close'].shift(1))

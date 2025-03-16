@@ -29,7 +29,7 @@ st.markdown("""
     padding: 8px; /* Adjust the padding to control height */
     width: auto; /* Auto width for responsiveness, or set a fixed width if necessary */
     margin: 0 auto; /* Center the container */
-    text-align: centre;
+    text-align: center;
 }
 
 /* Custom classes for CALL and PUT values */
@@ -38,7 +38,7 @@ st.markdown("""
     color: black; /* Black font color */
     margin-right: 10px; /* Spacing between CALL and PUT */
     border-radius: 10px; /* Rounded corners */
-    text-align: centre;
+    text-align: center;
 }
 
 .metric-put {
@@ -53,7 +53,7 @@ st.markdown("""
     font-size: 1.5rem; /* Adjust font size */
     font-weight: bold;
     margin: 0; /* Remove default margins */
-    text-align: centre;
+    text-align: center;
 }
 
 /* Style for the label text */

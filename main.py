@@ -153,14 +153,15 @@ def plot_candlestick_volume(df, stocks):
 
     # Shaded Area Between BB Upper & Lower
     fig.add_trace(go.Scatter(
-        x=pd.concat([df.index, df.index[::-1]]),
+        x=pd.concat([pd.Series(df.index), pd.Series(df.index[::-1])]),
         y=pd.concat([df['BB_upper'], df['BB_lower'][::-1]]),
         fill='toself',
-        fillcolor='rgba(173,216,230,0.2)',  # LightBlue with low alpha
+        fillcolor='rgba(173,216,230,0.2)',
         line=dict(color='rgba(255,255,255,0)'),
         hoverinfo="skip",
         showlegend=False
     ), row=1, col=1)
+
 
     # Volume Bar Chart
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)

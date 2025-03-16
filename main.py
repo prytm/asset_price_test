@@ -105,7 +105,7 @@ current_price = df['Close'].iloc[-1]
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, stocks):
-    # Bollinger Bands Calculation
+    # Calculate Moving Averages & Bollinger Bands
     df['MA10'] = df['Close'].rolling(window=10).mean()
     df['BB_upper'] = df['MA10'] + 2 * df['Close'].rolling(window=10).std()
     df['BB_lower'] = df['MA10'] - 2 * df['Close'].rolling(window=10).std()
@@ -117,7 +117,7 @@ def plot_candlestick_volume(df, stocks):
         row_width=[0.2, 0.7]
     )
 
-    # Candlestick
+    # Candlestick Chart
     fig.add_trace(go.Candlestick(
         x=df.index,
         open=df['Open'],
@@ -131,14 +131,41 @@ def plot_candlestick_volume(df, stocks):
     fig.add_trace(go.Scatter(x=df.index, y=df['MA50'], line=dict(color='blue', width=1), name='MA50'), row=1, col=1)
     fig.add_trace(go.Scatter(x=df.index, y=df['MA200'], line=dict(color='grey', width=1), name='MA200'), row=1, col=1)
 
-    # Bollinger Bands
-    fig.add_trace(go.Scatter(x=df.index, y=df['BB_upper'], line=dict(color='green', width=1), name='BB Upper'), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df['BB_lower'], line=dict(color='orange', width=1), name='BB Lower'), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df['MA10'], line=dict(color='purple', width=1), name='MA10'), row=1, col=1)
+    # Bollinger Bands (Dashed Lines)
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['BB_upper'],
+        line=dict(color='lightgreen', width=1, dash='dash'),
+        name='BB Upper'
+    ), row=1, col=1)
 
-    # Volume
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['BB_lower'],
+        line=dict(color='orange', width=1, dash='dash'),
+        name='BB Lower'
+    ), row=1, col=1)
+
+    # MA10 line
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['MA10'],
+        line=dict(color='purple', width=1),
+        name='MA10'
+    ), row=1, col=1)
+
+    # Shaded Area Between BB Upper & Lower
+    fig.add_trace(go.Scatter(
+        x=pd.concat([df.index, df.index[::-1]]),
+        y=pd.concat([df['BB_upper'], df['BB_lower'][::-1]]),
+        fill='toself',
+        fillcolor='rgba(173,216,230,0.2)',  # LightBlue with low alpha
+        line=dict(color='rgba(255,255,255,0)'),
+        hoverinfo="skip",
+        showlegend=False
+    ), row=1, col=1)
+
+    # Volume Bar Chart
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)
 
+    # Layout
     fig.update_layout(
         xaxis_tickfont_size=10,
         yaxis=dict(title='Price ($/Share)'),
@@ -147,11 +174,13 @@ def plot_candlestick_volume(df, stocks):
         margin=dict(l=50, r=50, b=100, t=50, pad=4),
         paper_bgcolor='black',
         plot_bgcolor='black',
-        font=dict(color='white')
+        font=dict(color='white'),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
     )
 
     fig.update(layout_xaxis_rangeslider_visible=False)
     return fig
+
 
 
 

@@ -65,6 +65,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+ttm_options = ['A Week', 'A Month', 'A Year']
+
 # Sidebar for User Inputs
 with st.sidebar:
     st.title("📊 Black-Scholes Model")
@@ -74,8 +76,16 @@ with st.sidebar:
 
     stocks = st.text_input("Underlying Asset", value = "AAPL")
     strike = st.number_input("Strike Price", value=100.0)
-    time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
+    time_to_maturity = st.selectbox("Time To Maturity:", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
+
+# Time to Maturity
+if time_to_maturity == 'A Week':
+    ttm = 1/52
+elif time_to_maturity == 'A Month':
+    ttm = 1/12
+else:
+    ttm = 1
 
 # (Include the BlackScholes class definition here)
 def BlackScholes (S, K, T, r, sigma):
@@ -189,7 +199,7 @@ st.title("Black-Scholes Pricing Model")
 input_data = {
     "Current Asset Price": [current_price],
     "Strike Price": [strike],
-    "Time to Maturity (Years)": [time_to_maturity],
+    "Time to Maturity (Years)": [ttm],
     "Volatility (σ)": [bs_vol],
     "Risk-Free Interest Rate": [interest_rate],
 }
@@ -197,7 +207,7 @@ input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
 # Calculate Call and Put values
-call_price, put_price = BlackScholes(strike, current_price, time_to_maturity, interest_rate, bs_vol)
+call_price, put_price = BlackScholes(strike, current_price, ttm, interest_rate, bs_vol)
 
 # Display Call and Put Values in colored tables
 col1, col2 = st.columns([1,1], gap="small")

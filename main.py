@@ -89,7 +89,7 @@ def BlackScholes (S, K, T, r, sigma):
 
 # Stocks df
 end = dt.datetime.now()
-start = dt.datetime(end.day, end.month, end.day - 120)
+start = dt.datetime(end.year, end.month, end.day - 120)
 
 df = yf.download(stocks, start, end)
 df.columns = df.columns.get_level_values(0)

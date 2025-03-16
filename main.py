@@ -182,9 +182,6 @@ def plot_candlestick_volume(df, stocks):
     fig.update(layout_xaxis_rangeslider_visible=False)
     return fig
 
-
-
-
 # Main Page for Output Display
 st.title("Black-Scholes Pricing Model")
 

@@ -105,6 +105,12 @@ current_price = df['Close'].iloc[-1]
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, stocks):
+    def plot_candlestick_volume(df, stocks):
+    # Bollinger Bands Calculation
+    df['MA10'] = df['Close'].rolling(window=10).mean()
+    df['BB_upper'] = df['MA10'] + 2 * df['Close'].rolling(window=10).std()
+    df['BB_lower'] = df['MA10'] - 2 * df['Close'].rolling(window=10).std()
+
     fig = make_subplots(
         rows=2, cols=1, shared_xaxes=True,
         vertical_spacing=0.1,
@@ -126,6 +132,11 @@ def plot_candlestick_volume(df, stocks):
     fig.add_trace(go.Scatter(x=df.index, y=df['MA50'], line=dict(color='blue', width=1), name='MA50'), row=1, col=1)
     fig.add_trace(go.Scatter(x=df.index, y=df['MA200'], line=dict(color='grey', width=1), name='MA200'), row=1, col=1)
 
+    # Bollinger Bands
+    fig.add_trace(go.Scatter(x=df.index, y=df['BB_upper'], line=dict(color='green', width=1), name='BB Upper'), row=1, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df['BB_lower'], line=dict(color='orange', width=1), name='BB Lower'), row=1, col=1)
+    fig.add_trace(go.Scatter(x=df.index, y=df['MA10'], line=dict(color='purple', width=1), name='MA10'), row=1, col=1)
+
     # Volume
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)
 
@@ -142,6 +153,7 @@ def plot_candlestick_volume(df, stocks):
 
     fig.update(layout_xaxis_rangeslider_visible=False)
     return fig
+
 
 # Main Page for Output Display
 st.title("Black-Scholes Pricing Model")

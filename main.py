@@ -132,9 +132,36 @@ def plot_candlestick_volume(df, stocks):
     fig.add_trace(go.Scatter(x=df.index, y=df['MA200'], line=dict(color='grey', width=1), name='MA200'), row=1, col=1)
 
     # Bollinger Bands
-    fig.add_trace(go.Scatter(x=df.index, y=df['BB_upper'], line=dict(color='green', width=1), name='BB Upper'), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df['BB_lower'], line=dict(color='orange', width=1), name='BB Lower'), row=1, col=1)
-    fig.add_trace(go.Scatter(x=df.index, y=df['MA10'], line=dict(color='purple', width=1), name='MA10'), row=1, col=1)
+        # Bollinger Bands (Dashed Lines)
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['BB_upper'],
+        line=dict(color='lightgreen', width=1, dash='dash'),
+        name='BB Upper'
+    ), row=1, col=1)
+
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['BB_lower'],
+        line=dict(color='orange', width=1, dash='dash'),
+        name='BB Lower'
+    ), row=1, col=1)
+
+    # MA10 line
+    fig.add_trace(go.Scatter(
+        x=df.index, y=df['MA10'],
+        line=dict(color='purple', width=1),
+        name='MA10'
+    ), row=1, col=1)
+
+    # Shaded Area Between BB Upper & Lower
+    fig.add_trace(go.Scatter(
+        x=pd.concat([df.index, df.index[::-1]]),
+        y=pd.concat([df['BB_upper'], df['BB_lower'][::-1]]),
+        fill='toself',
+        fillcolor='rgba(173,216,230,0.2)',  # LightBlue with low alpha
+        line=dict(color='rgba(255,255,255,0)'),
+        hoverinfo="skip",
+        showlegend=False
+    ), row=1, col=1)
 
     # Volume
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)

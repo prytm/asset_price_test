@@ -69,6 +69,14 @@ def BlackScholes (S, K, T, r, sigma):
 
     return call_price, put_price
 
+# Stocks df
+end = dt.datetime.now()
+start = dt.datetime(end.year - 1, end.month, end.day)
+
+df = yf.download(stocks, start, end)
+df.columns = df.columns.get_level_values(0)
+
+
 # Stocks Volatility
 log_return = np.log(df['Close'] / df['Close'].shift(1))
 log_return = log_return.dropna()
@@ -99,13 +107,6 @@ with st.sidebar:
     
     spot_range = np.linspace(spot_min, spot_max, 10)
     vol_range = np.linspace(vol_min, vol_max, 10)
-
-# Stocks df
-end = dt.datetime.now()
-start = dt.datetime(end.year - 1, end.month, end.day)
-
-df = yf.download(stocks, start, end)
-df.columns = df.columns.get_level_values(0)
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):

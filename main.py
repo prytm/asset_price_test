@@ -8,8 +8,6 @@ import plotly.offline as pyo
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 
-pyo.init_notebook_mode(connected = True)
-
 #######################
 # Page configuration
 st.set_page_config(

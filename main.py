@@ -104,11 +104,11 @@ bs_vol = volatility.iloc[-1]
 current_price = df['Close'].iloc[-1]
 
 # Candle Stick PLot
-def plot_candlestick_volume(df, ticker='CBA'):
+def plot_candlestick_volume(df, stocks):
     fig = make_subplots(
         rows=2, cols=1, shared_xaxes=True,
         vertical_spacing=0.1,
-        subplot_titles=(f'{ticker} Price Chart', 'Volume'),
+        subplot_titles=(f'{stocks} Price Chart', 'Volume'),
         row_width=[0.2, 0.7]
     )
 

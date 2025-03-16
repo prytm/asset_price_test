@@ -75,7 +75,7 @@ with st.sidebar:
     st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Priya Tammam`</a>', unsafe_allow_html=True)
 
     stocks = st.text_input("Underlying Asset", value = "AAPL")
-    strike = st.number_input("Strike Price", value= 250.00)
+    strike = st.number_input("Strike Price", value= 200.00)
     time_to_maturity = st.selectbox("Time To Maturity", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
 

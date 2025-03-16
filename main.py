@@ -196,8 +196,8 @@ if not df.empty:
     df['MA200'] = df['Close'].rolling(window = 200, min_periods = 0).mean()
 
     # Call plot function
-    st.subheader(f"{ticker} Candlestick Chart")
-    candlestick_fig = plot_candlestick_volume(df, ticker)
+    st.subheader(f"{stocks} Candlestick Chart")
+    candlestick_fig = plot_candlestick_volume(df, stocks)
     st.plotly_chart(candlestick_fig, use_container_width=True)
 else:
     st.warning("⚠️ No data available for the selected ticker and date range.")

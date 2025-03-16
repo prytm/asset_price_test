@@ -53,6 +53,7 @@ st.markdown("""
     font-size: 1.5rem; /* Adjust font size */
     font-weight: bold;
     margin: 0; /* Remove default margins */
+    text-align: centre;
 }
 
 /* Style for the label text */

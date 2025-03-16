@@ -60,6 +60,31 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Sidebar for User Inputs
+with st.sidebar:
+    st.title("📊 Black-Scholes Model")
+    st.write("Created by:")
+    linkedin_url = "https://www.linkedin.com/in/prytm/"
+    st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Priya Tammam`</a>', unsafe_allow_html=True)
+
+    stocks = st.text_input("Underlying Asset", value = "AAPL")
+    current_price = st.number_input("Current Asset Price", value=100.0)
+    strike = st.number_input("Strike Price", value=100.0)
+    time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
+    interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
+    volatility = bs_vol
+
+    st.markdown("---")
+    calculate_btn = st.button('Heatmap Parameters')
+    spot_min = st.number_input('Min Spot Price', min_value=0.01, value=current_price*0.8, step=0.01)
+    spot_max = st.number_input('Max Spot Price', min_value=0.01, value=current_price*1.2, step=0.01)
+    vol_min = st.slider('Min Volatility for Heatmap', min_value=0.01, max_value=1.0, value=volatility*0.5, step=0.01)
+    vol_max = st.slider('Max Volatility for Heatmap', min_value=0.01, max_value=1.0, value=volatility*1.5, step=0.01)
+    
+    spot_range = np.linspace(spot_min, spot_max, 10)
+    vol_range = np.linspace(vol_min, vol_max, 10)
+
+
 # (Include the BlackScholes class definition here)
 def BlackScholes (S, K, T, r, sigma):
     d1 = (np.log(S/K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
@@ -84,30 +109,6 @@ log_return = log_return.dropna()
 volatility = log_return.rolling(window=30).std() * np.sqrt(252)
 bs_vol = volatility.iloc[-1]
 st.metric("⚡ Black-Scholes Volatility", f"{bs_vol:.2%}")
-
-# Sidebar for User Inputs
-with st.sidebar:
-    st.title("📊 Black-Scholes Model")
-    st.write("Created by:")
-    linkedin_url = "https://www.linkedin.com/in/prytm/"
-    st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Priya Tammam`</a>', unsafe_allow_html=True)
-
-    stocks = st.text_input("Underlying Asset", value = "AAPL")
-    current_price = st.number_input("Current Asset Price", value=100.0)
-    strike = st.number_input("Strike Price", value=100.0)
-    time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
-    interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
-    volatility = bs_vol
-
-    st.markdown("---")
-    calculate_btn = st.button('Heatmap Parameters')
-    spot_min = st.number_input('Min Spot Price', min_value=0.01, value=current_price*0.8, step=0.01)
-    spot_max = st.number_input('Max Spot Price', min_value=0.01, value=current_price*1.2, step=0.01)
-    vol_min = st.slider('Min Volatility for Heatmap', min_value=0.01, max_value=1.0, value=volatility*0.5, step=0.01)
-    vol_max = st.slider('Max Volatility for Heatmap', min_value=0.01, max_value=1.0, value=volatility*1.5, step=0.01)
-    
-    spot_range = np.linspace(spot_min, spot_max, 10)
-    vol_range = np.linspace(vol_min, vol_max, 10)
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):

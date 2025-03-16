@@ -236,7 +236,7 @@ with col2:
 
 st.markdown("")
 st.title("Options Price - Interactive Candlestick Chart")
-st.info("Explore how option prices fluctuate with varying 'Spot Prices and Volatility' levels using interactive heatmap parameters, all while maintaining a constant 'Strike Price'.")
+st.info("Explore how underlying asset prices fluctuate.")
 
 # Interactive Sliders and Heatmaps for Call and Put Options
 if not df.empty:

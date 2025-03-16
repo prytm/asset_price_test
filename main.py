@@ -105,7 +105,6 @@ current_price = df['Close'].iloc[-1]
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, stocks):
-    def plot_candlestick_volume(df, stocks):
     # Bollinger Bands Calculation
     df['MA10'] = df['Close'].rolling(window=10).mean()
     df['BB_upper'] = df['MA10'] + 2 * df['Close'].rolling(window=10).std()

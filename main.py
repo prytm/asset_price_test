@@ -37,12 +37,14 @@ st.markdown("""
     color: black; /* Black font color */
     margin-right: 10px; /* Spacing between CALL and PUT */
     border-radius: 10px; /* Rounded corners */
+    text-align: centre;
 }
 
 .metric-put {
     background-color: #ffcccb; /* Light red background */
     color: black; /* Black font color */
     border-radius: 10px; /* Rounded corners */
+    text-align: centre;
 }
 
 /* Style for the value text */

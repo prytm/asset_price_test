@@ -97,7 +97,7 @@ volatility = log_return.rolling(window=30).std() * np.sqrt(252)
 bs_vol = volatility.iloc[-1]
 
 # Current Price
-current_prie = df['Close'].iloc[-1]
+current_price = df['Close'].iloc[-1]
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):

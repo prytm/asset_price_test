@@ -96,7 +96,6 @@ log_return = np.log(df['Close'] / df['Close'].shift(1))
 log_return = log_return.dropna()
 volatility = log_return.rolling(window=30).std() * np.sqrt(252)
 bs_vol = volatility.iloc[-1]
-st.metric("⚡ Black-Scholes Volatility", f"{bs_vol:.2%}")
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):
@@ -154,7 +153,7 @@ input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
 # Calculate Call and Put values
-call_price, put_price = BlackScholes(strike, time_to_maturity, interest_rate, volatility)
+call_price, put_price = BlackScholes(strike, time_to_maturity, interest_rate, bs_vol)
 
 # Display Call and Put Values in colored tables
 col1, col2 = st.columns([1,1], gap="small")

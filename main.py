@@ -79,7 +79,7 @@ with st.sidebar:
     time_to_maturity = st.selectbox("Time To Maturity", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
 
-    st.markdown("--")
+    st.markdown("---")
 
 # Time to Maturity
 if time_to_maturity == 'A Week':

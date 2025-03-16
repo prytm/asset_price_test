@@ -81,7 +81,7 @@ with st.sidebar:
     strike = st.number_input("Strike Price", value=100.0)
     time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
-    volatility = df['Close'].std()
+    volatility = bs_vol
 
     st.markdown("---")
     calculate_btn = st.button('Heatmap Parameters')
@@ -99,6 +99,13 @@ start = dt.datetime(end.year - 1, end.month, end.day)
 
 df = yf.download(stocks, start, end)
 df.columns = df.columns.get_level_values(0)
+
+# Stocks Volatility
+log_return = np.log(df['Close'] / df['Close'].shift(1))
+log_return = log_return.dropna()
+volatility = log_return.rolling(window=30).std() * np.sqrt(252)
+bs_vol = volatility.iloc[-1]
+st.metric("⚡ Black-Scholes Volatility", f"{bs_vol:.2%}")
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):

@@ -238,7 +238,7 @@ with col2:
     """, unsafe_allow_html=True)
 
 st.markdown("")
-st.title("Options Price - Interactive Candlestick Chart")
+st.title("Assets Price - Interactive Candlestick Chart")
 st.info("Explore how underlying asset prices fluctuate.")
 
 # Interactive Sliders and Heatmaps for Call and Put Options

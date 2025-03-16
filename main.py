@@ -1,11 +1,14 @@
 import streamlit as st
+import datetime as dt
 import pandas as pd
-import numpy as np
+import yfinance as yf
 from scipy.stats import norm
-import plotly.graph_objects as go
-from numpy import log, sqrt, exp  # Make sure to import these
-import matplotlib.pyplot as plt
-import seaborn as sns
+from pandas_datareader import data as pdr
+import plotly.offline as pyo
+import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+
+pyo.init_notebook_mode(connected = True)
 
 #######################
 # Page configuration

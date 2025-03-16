@@ -2,6 +2,7 @@ import streamlit as st
 import datetime as dt
 import pandas as pd
 import yfinance as yf
+import numpy as np
 from scipy.stats import norm
 from pandas_datareader import data as pdr
 import plotly.offline as pyo

@@ -69,7 +69,6 @@ with st.sidebar:
     st.markdown(f'<a href="{linkedin_url}" target="_blank" style="text-decoration: none; color: inherit;"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="25" height="25" style="vertical-align: middle; margin-right: 10px;">`Priya Tammam`</a>', unsafe_allow_html=True)
 
     stocks = st.text_input("Underlying Asset", value = "AAPL")
-    current_price = st.number_input("Current Asset Price", value=100.0)
     strike = st.number_input("Strike Price", value=100.0)
     time_to_maturity = st.number_input("Time to Maturity (Years)", value=1.0)
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
@@ -96,6 +95,9 @@ log_return = np.log(df['Close'] / df['Close'].shift(1))
 log_return = log_return.dropna()
 volatility = log_return.rolling(window=30).std() * np.sqrt(252)
 bs_vol = volatility.iloc[-1]
+
+# Current Price
+current_prie = df['Close'].iloc[-1]
 
 # Candle Stick PLot
 def plot_candlestick_volume(df, ticker='CBA'):
@@ -146,14 +148,14 @@ input_data = {
     "Current Asset Price": [current_price],
     "Strike Price": [strike],
     "Time to Maturity (Years)": [time_to_maturity],
-    "Volatility (σ)": [volatility],
+    "Volatility (σ)": [bs_vol],
     "Risk-Free Interest Rate": [interest_rate],
 }
 input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
 # Calculate Call and Put values
-call_price, put_price = BlackScholes(strike, time_to_maturity, interest_rate, bs_vol)
+call_price, put_price = BlackScholes(strike, current_price, time_to_maturity, interest_rate, bs_vol)
 
 # Display Call and Put Values in colored tables
 col1, col2 = st.columns([1,1], gap="small")

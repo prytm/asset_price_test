@@ -29,6 +29,7 @@ st.markdown("""
     padding: 8px; /* Adjust the padding to control height */
     width: auto; /* Auto width for responsiveness, or set a fixed width if necessary */
     margin: 0 auto; /* Center the container */
+    text-align: centre;
 }
 
 /* Custom classes for CALL and PUT values */

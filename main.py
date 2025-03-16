@@ -79,6 +79,8 @@ with st.sidebar:
     time_to_maturity = st.selectbox("Time To Maturity", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
 
+    st.markdown("--")
+
 # Time to Maturity
 if time_to_maturity == 'A Week':
     ttm = 1/52
@@ -172,7 +174,6 @@ def plot_candlestick_volume(df, stocks):
         showlegend=False
     ), row=1, col=1)
 
-
     # Volume Bar Chart
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)
 
@@ -203,6 +204,7 @@ input_data = {
     "Volatility (σ)": [bs_vol],
     "Risk-Free Interest Rate": [interest_rate],
 }
+
 input_df = pd.DataFrame(input_data)
 st.table(input_df)
 

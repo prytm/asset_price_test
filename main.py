@@ -130,12 +130,11 @@ def plot_candlestick_volume(df, stocks):
     fig.add_trace(go.Bar(x=df.index, y=df['Volume'], marker_color='red', showlegend=False), row=2, col=1)
 
     fig.update_layout(
-        title=f'{stocks} Historical Price Chart',
         xaxis_tickfont_size=10,
         yaxis=dict(title='Price ($/Share)'),
         autosize=True,
         height=700,
-        margin=dict(l=50, r=50, b=100, t=100, pad=4),
+        margin=dict(l=50, r=50, b=100, t=50, pad=4),
         paper_bgcolor='black',
         plot_bgcolor='black',
         font=dict(color='white')

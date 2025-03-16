@@ -76,7 +76,7 @@ with st.sidebar:
 
     stocks = st.text_input("Underlying Asset", value = "AAPL")
     strike = st.number_input("Strike Price", value=100.0)
-    time_to_maturity = st.selectbox("Time To Maturity:", options = ttm_options, index=ttm_options.index('A Week'))
+    time_to_maturity = st.selectbox("Time To Maturity", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
 
 # Time to Maturity
@@ -199,7 +199,7 @@ st.title("Black-Scholes Pricing Model")
 input_data = {
     "Current Asset Price": [current_price],
     "Strike Price": [strike],
-    "Time to Maturity (Years)": [ttm],
+    "Time to Maturity": [time_to_maturity],
     "Volatility (σ)": [bs_vol],
     "Risk-Free Interest Rate": [interest_rate],
 }

@@ -352,7 +352,7 @@ with col4:
 
 st.markdown("")
 st.title("Assets Price - Interactive Candlestick Chart")
-st.info("Explore how underlying asset prices fluctuate.")
+st.info("Explore the dynamics of the underlying asset's price movements over time, enhanced with a 95% confidence interval.")
 
 # Interactive Sliders and Heatmaps for Call and Put Options
 if not df.empty:

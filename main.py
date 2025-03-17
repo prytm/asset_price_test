@@ -112,7 +112,7 @@ with st.sidebar:
         
         ---
         **Example**  
-        Suppose AAPL stock is at $213. You buy a Call Option with a strike price of $200. If AAPL rises to $230, you can buy it for $200 — earning a $30 profit (minus premium).
+        Suppose AAPL stock is at '$213'. You buy a Call Option with a strike price of $200. If AAPL rises to '$230', you can buy it for '$200' — earning a '$30' profit (minus premium).
         """)
         
     with st.expander("📊 What are Greeks in Options?"):

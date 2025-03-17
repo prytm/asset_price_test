@@ -97,6 +97,50 @@ with st.sidebar:
     
         **Note:** The model assumes no dividends and does not apply to American options, which can be exercised before the expiration date.
         """)
+        
+        with st.expander("📘 What is an Option?"):
+            st.markdown("""
+        **Options** are financial derivatives that give the buyer the **right**, but not the obligation, to **buy (Call)** or **sell (Put)** an underlying asset at a specified price (strike price) before or at a certain date.
+        
+        - **Call Option** → Gives the right to **buy** the asset → used when you expect the price to **go up**.
+        - **Put Option** → Gives the right to **sell** the asset → used when you expect the price to **go down**.
+        
+        Options can be used for:
+        - 📈 **Speculation**: Predicting price movement without owning the asset.
+        - 🛡️ **Hedging**: Protecting your portfolio from adverse price movements.
+        
+        > Options are powerful tools in finance — they’re not just for speculation, but also risk management!
+        
+        ---
+        **Example**  
+        Suppose AAPL stock is at $213.  
+        You buy a **Call Option** with a strike price of $200.  
+        If AAPL rises to $230, you can buy it for $200 — earning a $30 profit (minus premium).
+            """)
+        
+        with st.expander("📊 What are Greeks in Options?"):
+            st.markdown("""
+        **Greeks** are risk measures that show how an option’s price is expected to change with various factors:
+        
+        - **Delta (Δ)**: Measures how much the option price changes when the **underlying asset** price changes by $1.  
+            > High Delta = Option is more sensitive to price changes.
+        
+        - **Gamma (Γ)**: Measures how fast Delta changes when the asset price changes.  
+            > Think of Gamma as the "acceleration" of Delta.
+        
+        - **Theta (Θ)**: Measures the **time decay** of the option.  
+            > Shows how much value the option loses each day as it approaches expiry.
+        
+        - **Vega (ν)**: Measures how much the option price changes with a **1% change in volatility** of the asset.  
+            > More volatility = higher option value.
+        
+        - **Rho (ρ)**: Measures sensitivity to **interest rate** changes.  
+            > Least impactful in most short-term options.
+        
+        ---
+        These help traders and analysts manage risk and build more advanced strategies.
+            """)
+
 
 # Time to Maturity
 if time_to_maturity == 'A Week':

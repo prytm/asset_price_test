@@ -353,7 +353,16 @@ st.markdown("")
 col3, col4 = st.columns([1,1], gap="medium")
 
 with col3:
-    st.dataframe(call_df, hide_index = True)
+    # Data
+    call_data = [
+        [delta_c, theta_c, rho_c, gamma_c, vega_c]]
+    
+    # MultiIndex header
+    headers = pd.MultiIndex.from_product([["Call Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])
+    call_df = pd.DataFrame(call_data, columns=headers)
+
+# Display using st.table (karena st.dataframe tidak dukung MultiIndex)
+st.table(call_df)
 
 with col4:
     st.dataframe(put_df, hide_index = True)

@@ -347,10 +347,10 @@ with col4:
     
     # MultiIndex header
     headers = pd.MultiIndex.from_product([["Put Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])
-    call_df = pd.DataFrame(call_data, columns=headers)
+    put_df = pd.DataFrame(put_data, columns=headers)
 
     # Display using st.table (karena st.dataframe tidak dukung MultiIndex)
-    st.dataframe(call_df, hide_index = True)
+    st.dataframe(put_df, hide_index = True)
 
 st.markdown("")
 st.title("Assets Price - Interactive Candlestick Chart")

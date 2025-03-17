@@ -146,6 +146,8 @@ def black_scholes_g_c (S, K, T, r, sigma):
 
     return delta_c, theta_c, rho_c, gamma_c, vega_c
 
+delta_c, theta_c, rho_c, gamma_c, vega_c = black_scholes_g_c(current_price, strike, ttm, interest_rate, bs_vol)
+
 def black_scholes_g_p (S, K, T, r, sigma):
     d1 = (np.log(S/K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
     d2 = d1 - sigma * np.sqrt(T)
@@ -158,7 +160,9 @@ def black_scholes_g_p (S, K, T, r, sigma):
     vega_p = S * norm.pdf(d1) * np.sqrt(T) / 100
 
     return delta_p, theta_p, rho_p, gamma_p, vega_p
-    
+
+delta_p, theta_p, rho_p, gamma_p, vega_p = black_scholes_g_p(current_price, strike, ttm, interest_rate, bs_vol)
+
 # Candle Stick PLot
 def plot_candlestick_volume(df, stocks):
     # Calculate Moving Averages & Bollinger Bands

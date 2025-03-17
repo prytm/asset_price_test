@@ -132,6 +132,33 @@ bs_vol = volatility.iloc[-1]
 # Current Price
 current_price = df['Close'].iloc[-1]
 
+# Greeks Calculations
+def black_scholes_g_c (S, K, T, r, sigma):
+    d1 = (np.log(S/K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+    d2 = d1 - sigma * np.sqrt(T)
+
+    delta_c = norm.cdf(d1)
+    theta_c = (-S * norm.pdf(d1) * sigma / (2 * np.sqrt(T)) 
+             - r * K * np.exp(-r * T) * norm.cdf(d2)) / 365
+    rho_c = K * T * np.exp(-r * T) * norm.cdf(d2) / 100
+    gamma_c = norm.pdf(d1) / (S * sigma * np.sqrt(T))
+    vega_c = S * norm.pdf(d1) * np.sqrt(T) / 100
+
+    return delta_c, theta_c, rho_c, gamma_c, vega_c
+
+def black_scholes_g_p (S, K, T, r, sigma):
+    d1 = (np.log(S/K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+    d2 = d1 - sigma * np.sqrt(T)
+
+    delta_p = norm.cdf(d1) - 1
+    theta_p = (-S * norm.pdf(d1) * sigma / (2 * np.sqrt(T)) 
+             + r * K * np.exp(-r * T) * norm.cdf(-d2)) / 365
+    rho_p = -K * T * np.exp(-r * T) * norm.cdf(-d2) / 100
+    gamma_p = norm.pdf(d1) / (S * sigma * np.sqrt(T))
+    vega_p = S * norm.pdf(d1) * np.sqrt(T) / 100
+
+    return delta_p, theta_p, rho_p, gamma_p, vega_p
+    
 # Candle Stick PLot
 def plot_candlestick_volume(df, stocks):
     # Calculate Moving Averages & Bollinger Bands
@@ -225,6 +252,30 @@ input_data = {
 input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
+# Table of Greeks Call
+
+call_data = {
+    "Delta": [delta_c],
+    "Theta": [theta_c],
+    "rho": [rho_c],
+    "Gamma": [gamma_c],
+    "Vega": [vega_c],
+}
+
+call_df = pd.DataFrame(call_data)
+
+# Table of Greeks Put
+
+put_data = {
+    "Delta": [delta_p],
+    "Theta": [theta_p],
+    "rho": [rho_p],
+    "Gamma": [gamma_p],
+    "Vega": [vega_p],
+}
+
+put_df = pd.DataFrame(put_data)
+
 # Calculate Call and Put values
 call_price, put_price = BlackScholes(current_price, strike, ttm, interest_rate, bs_vol)
 
@@ -252,6 +303,14 @@ with col2:
             </div>
         </div>
     """, unsafe_allow_html=True)
+
+col3, col4 = st.columns([1,1], gap="small")
+
+with col3:
+    st.table(call_df)
+
+with col4:
+    st.table(put_df)
 
 st.markdown("")
 st.title("Assets Price - Interactive Candlestick Chart")

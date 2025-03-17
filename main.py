@@ -82,20 +82,20 @@ with st.sidebar:
 
     st.markdown("---")
 
-    with st.expander("📘 Apa itu Black-Scholes Model?"):
+    with st.expander("📘 Whats is Black-Scholes Model?"):
         st.markdown("""
-        **Black-Scholes Model** adalah model matematika yang digunakan untuk menghitung nilai wajar (fair value) dari opsi tipe Eropa (European Call dan Put Option).  
-        Model ini dikembangkan oleh Fischer Black, Myron Scholes, dan Robert Merton pada tahun 1973.
+        The **Black-Scholes Model** is a mathematical model used to calculate the theoretical price of European-style options (both Call and Put).
     
-        Model ini mengasumsikan bahwa harga aset mengikuti proses log-normal, dan mempertimbangkan faktor-faktor seperti:
-        - Harga aset saat ini
-        - Harga strike (Strike Price)
-        - Waktu hingga jatuh tempo
-        - Volatilitas aset
-        - Suku bunga bebas risiko
+        Developed by Fischer Black, Myron Scholes, and Robert Merton in 1973, this model assumes that asset prices follow a log-normal distribution and incorporates several key variables:
+        - Current asset price
+        - Strike price
+        - Time to maturity
+        - Asset price volatility
+        - Risk-free interest rate
     
-        Black-Scholes digunakan secara luas di pasar keuangan karena memberikan pendekatan analitis yang efisien untuk menentukan nilai opsi.  
-        Namun, model ini juga memiliki keterbatasan, seperti tidak mempertimbangkan dividen atau opsi yang bisa dieksekusi sebelum jatuh tempo (American Option).
+        The Black-Scholes model is widely used in financial markets because it provides a relatively simple yet powerful method to estimate option prices.
+    
+        **Note:** The model assumes no dividends and does not apply to American options, which can be exercised before the expiration date.
         """)
 
 # Time to Maturity

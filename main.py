@@ -81,22 +81,6 @@ with st.sidebar:
 
     st.markdown("---")
 
-    with st.expander("**📘 Whats is Black-Scholes Model?**"):
-        st.markdown("""
-        The **Black-Scholes Model** is a mathematical model used to calculate the theoretical price of European-style options (both Call and Put).
-    
-        Developed by Fischer Black, Myron Scholes, and Robert Merton in 1973, this model assumes that asset prices follow a log-normal distribution and incorporates several key variables:
-        - Current asset price
-        - Strike price
-        - Time to maturity
-        - Asset price volatility
-        - Risk-free interest rate
-    
-        The Black-Scholes model is widely used in financial markets because it provides a relatively simple yet powerful method to estimate option prices.
-    
-        **Note:** The model assumes no dividends and does not apply to American options, which can be exercised before the expiration date.
-        """)
-        
     with st.expander("📘 What is an Option?"):
         st.markdown("""
         **Options** are financial derivatives that give the buyer the **right**, but not the obligation, to **buy (Call)** or **sell (Put)** an underlying asset at a specified price (strike price) before or at a certain date.
@@ -113,6 +97,22 @@ with st.sidebar:
         ---
         **Example**  
         Suppose AAPL stock is at **\$213**. You buy a Call Option with a strike price of **\$200**. If AAPL rises to **\$230**, you can buy it for **\$200** — earning a **\$30** profit (minus premium).
+        """)
+    
+    with st.expander("**📘 Whats is Black-Scholes Model?**"):
+        st.markdown("""
+        The **Black-Scholes Model** is a mathematical model used to calculate the theoretical price of European-style options (both Call and Put).
+    
+        Developed by Fischer Black, Myron Scholes, and Robert Merton in 1973, this model assumes that asset prices follow a log-normal distribution and incorporates several key variables:
+        - Current asset price
+        - Strike price
+        - Time to maturity
+        - Asset price volatility
+        - Risk-free interest rate
+    
+        The Black-Scholes model is widely used in financial markets because it provides a relatively simple yet powerful method to estimate option prices.
+    
+        **Note:** The model assumes no dividends and does not apply to American options, which can be exercised before the expiration date.
         """)
         
     with st.expander("📊 What are Greeks in Options?"):

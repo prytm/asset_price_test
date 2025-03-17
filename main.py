@@ -313,10 +313,10 @@ st.markdown("")
 col3, col4 = st.columns([1,1], gap="medium")
 
 with col3:
-    st.table(call_df)
+    st.table(call_df, hide_index = True)
 
 with col4:
-    st.table(put_df)
+    st.table(put_df, hide_index = True)
 
 st.markdown("")
 st.title("Assets Price - Interactive Candlestick Chart")

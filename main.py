@@ -308,6 +308,8 @@ with col2:
         </div>
     """, unsafe_allow_html=True)
 
+st.markdown("")
+
 col3, col4 = st.columns([1,1], gap="small")
 
 with col3:

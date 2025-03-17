@@ -343,7 +343,7 @@ with col3:
 
 with col4:
     # Data
-    call_data = [[delta_c, theta_c, rho_c, gamma_c, vega_c]]
+    put_data = [[delta_p, theta_p, rho_p, gamma_p, vega_p]]
     
     # MultiIndex header
     headers = pd.MultiIndex.from_product([["Put Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])

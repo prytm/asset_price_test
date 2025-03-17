@@ -82,7 +82,7 @@ with st.sidebar:
 
     st.markdown("---")
 
-    with st.expander("📘 Whats is Black-Scholes Model?"):
+    with st.expander("**📘 Whats is Black-Scholes Model?**"):
         st.markdown("""
         The **Black-Scholes Model** is a mathematical model used to calculate the theoretical price of European-style options (both Call and Put).
     

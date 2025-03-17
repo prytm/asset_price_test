@@ -310,7 +310,7 @@ with col2:
 
 st.markdown("")
 
-col3, col4 = st.columns([1,1], gap="small")
+col3, col4 = st.columns([1,1], gap="medium")
 
 with col3:
     st.table(call_df)

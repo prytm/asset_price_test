@@ -18,7 +18,7 @@ st.set_page_config(
     initial_sidebar_state="expanded")
 
 
-# Custom CSS to inject into Streamlit
+# CSS
 st.markdown("""
 <style>
 /* Adjust the size and alignment of the CALL and PUT value containers */

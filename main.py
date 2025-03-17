@@ -296,28 +296,6 @@ input_data = {
 input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
-# Table of Greeks Call
-
-call_data = {
-    "Delta": [delta_c],
-    "Theta": [theta_c],
-    "rho": [rho_c],
-    "Gamma": [gamma_c],
-    "Vega": [vega_c],
-}
-
-call_df = pd.DataFrame(call_data)
-
-# Table of Greeks Put
-
-put_data = {
-    "Delta": [delta_p],
-    "Theta": [theta_p],
-    "rho": [rho_p],
-    "Gamma": [gamma_p],
-    "Vega": [vega_p],
-}
-
 put_df = pd.DataFrame(put_data)
 
 # Calculate Call and Put values
@@ -354,8 +332,7 @@ col3, col4 = st.columns([1,1], gap="medium")
 
 with col3:
     # Data
-    call_data = [
-        [delta_c, theta_c, rho_c, gamma_c, vega_c]]
+    call_data = [[delta_c, theta_c, rho_c, gamma_c, vega_c]]
     
     # MultiIndex header
     headers = pd.MultiIndex.from_product([["Call Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])
@@ -365,7 +342,15 @@ with col3:
     st.dataframe(call_df, hide_index = True)
 
 with col4:
-    st.dataframe(put_df, hide_index = True)
+    # Data
+    call_data = [[delta_c, theta_c, rho_c, gamma_c, vega_c]]
+    
+    # MultiIndex header
+    headers = pd.MultiIndex.from_product([["Put Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])
+    call_df = pd.DataFrame(call_data, columns=headers)
+
+    # Display using st.table (karena st.dataframe tidak dukung MultiIndex)
+    st.dataframe(call_df, hide_index = True)
 
 st.markdown("")
 st.title("Assets Price - Interactive Candlestick Chart")

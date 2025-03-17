@@ -226,7 +226,7 @@ input_df = pd.DataFrame(input_data)
 st.table(input_df)
 
 # Calculate Call and Put values
-call_price, put_price = BlackScholes(strike, current_price, ttm, interest_rate, bs_vol)
+call_price, put_price = BlackScholes(current_price, strike, ttm, interest_rate, bs_vol)
 
 # Display Call and Put Values in colored tables
 col1, col2 = st.columns([1,1], gap="small")

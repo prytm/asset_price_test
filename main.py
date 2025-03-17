@@ -294,7 +294,7 @@ input_data = {
 }
 
 input_df = pd.DataFrame(input_data)
-st.table(input_df)
+st.dataframe(input_df, hide_index = True)
 
 # Calculate Call and Put values
 call_price, put_price = BlackScholes(current_price, strike, ttm, interest_rate, bs_vol)

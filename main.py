@@ -98,7 +98,7 @@ with st.sidebar:
         """)
         
     with st.expander("📘 What is an Option?"):
-        st.markdown("""
+        st.text("""
         **Options** are financial derivatives that give the buyer the **right**, but not the obligation, to **buy (Call)** or **sell (Put)** an underlying asset at a specified price (strike price) before or at a certain date.
         
         - **Call Option** → Gives the right to **buy** the asset → used when you expect the price to **go up**.
@@ -112,7 +112,7 @@ with st.sidebar:
         
         ---
         **Example**  
-        Suppose AAPL stock is at \$213. You buy a Call Option with a strike price of $200. If AAPL rises to \$230, you can buy it for \$200 — earning a \$30 profit (minus premium).
+        Suppose AAPL stock is at $213. You buy a Call Option with a strike price of $200. If AAPL rises to $230, you can buy it for $200 — earning a $30 profit (minus premium).
         """)
         
     with st.expander("📊 What are Greeks in Options?"):

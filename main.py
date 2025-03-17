@@ -361,8 +361,8 @@ with col3:
     headers = pd.MultiIndex.from_product([["Call Greeks"], ["Delta", "Theta", "Rho", "Gamma", "Vega"]])
     call_df = pd.DataFrame(call_data, columns=headers)
 
-# Display using st.table (karena st.dataframe tidak dukung MultiIndex)
-st.table(call_df)
+    # Display using st.table (karena st.dataframe tidak dukung MultiIndex)
+    st.table(call_df)
 
 with col4:
     st.dataframe(put_df, hide_index = True)

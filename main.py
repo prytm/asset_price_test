@@ -362,7 +362,7 @@ with col3:
     call_df = pd.DataFrame(call_data, columns=headers)
 
     # Display using st.table (karena st.dataframe tidak dukung MultiIndex)
-    st.table(call_df)
+    st.dataframe(call_df, hide_index = True)
 
 with col4:
     st.dataframe(put_df, hide_index = True)

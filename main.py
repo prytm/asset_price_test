@@ -9,13 +9,14 @@ import plotly.offline as pyo
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 
-#######################
+######################
 
+# Page configuration
 st.set_page_config(
-    page_title="Black-Scholes Pricing Model",
-    page_icon="📈",
-    layout="wide"
-)
+    page_title="Black Scholes Pricing Asset",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded")
 
 st.markdown(
     """
@@ -29,13 +30,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-# Page configuration
-st.set_page_config(
-    page_title="Black Scholes Pricing Asset",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="expanded")
 
 # CSS
 st.markdown("""

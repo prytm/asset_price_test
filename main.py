@@ -11,6 +11,12 @@ from plotly.subplots import make_subplots
 
 #######################
 
+st.set_page_config(
+    page_title="Black-Scholes Pricing Model",
+    page_icon="📈",
+    layout="wide"
+)
+
 st.markdown(
     """
     <style>

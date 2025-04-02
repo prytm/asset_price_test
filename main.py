@@ -89,7 +89,7 @@ with st.sidebar:
 
     st.header("Input Data")
     stocks = st.text_input("Underlying Asset", value = "AAPL")
-    strike = st.number_input("Strike Price", value= 215.00)
+    strike = st.number_input("Strike Price", value= 222.00)
     time_to_maturity = st.selectbox("Time To Maturity", options = ttm_options, index=ttm_options.index('A Week'))
     interest_rate = st.number_input("Risk-Free Interest Rate", value=0.05)
 
